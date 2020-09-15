@@ -403,3 +403,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# Added by me
+csharp_practice.sln
+csharp_practice.csproj
+csharp_practice/Properties/
