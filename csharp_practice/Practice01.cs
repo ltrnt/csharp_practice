@@ -40,7 +40,7 @@ namespace csharp_practice
             Console.Write("Введите процент по вкладу = ");
             decimal percent = Decimal.Parse(Console.ReadLine());
 
-            Console.WriteLine(String.Format("Через год начислят {0:C} р", ((percent / 100) * sum)));
+            Console.WriteLine(String.Format("Через год начислят {0:f2} р", (percent / 100) * sum));
         }
     }
 }
