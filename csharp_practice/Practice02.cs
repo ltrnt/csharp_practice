@@ -16,8 +16,6 @@ namespace csharp_practice
             int b = Convert.ToInt32(numbers[1]);
             int c = Convert.ToInt32(numbers[2]);
 
-            
-
             Console.WriteLine("Треугольник " + ((a == b && b == c) ? "равносторонний" : "не равносторонний"));
         }
 
