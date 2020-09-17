@@ -12,13 +12,23 @@ namespace csharp_practice
             Console.Write("Введите длину трех сторон треугольника через пробел: ");
             string[] numbers = Console.ReadLine().Split(' ');
 
-            Console.WriteLine("Треугольник " +
-                (numbers[0].Equals(numbers[1]) && numbers[1].Equals(numbers[2]) ? "равносторонний" : "не равносторонний"));
+            int a = Convert.ToInt32(numbers[0]);
+            int b = Convert.ToInt32(numbers[1]);
+            int c = Convert.ToInt32(numbers[2]);
+
+            
+
+            Console.WriteLine("Треугольник " + ((a == b && b == c) ? "равносторонний" : "не равносторонний"));
         }
 
         public static void Task3_20()
-        {
-            // TODO Попросить обьяснить, что вообще нужно делать
+        { // Натуральное трехзначное число
+            int y = Convert.ToInt32(Console.ReadLine());
+            int z = Convert.ToInt32(Console.ReadLine());
+
+            int x = z * 100 + y;
+
+            Console.WriteLine("Исходное число {0}", x);
         }
     }
 }
