@@ -8,7 +8,7 @@ namespace csharp_practice
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Practice03.Task4_20();
+            Practice04.Task6_20();
         }
     }
 }
