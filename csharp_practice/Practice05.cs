@@ -38,7 +38,7 @@ namespace csharp_practice
         public static void Task2_5()
         {
             const int numberOfValues = 4;
-            int[] values = new int[numberOfValues]; // [0] = a, [1] = b, [2] = C, [3] = A
+            int[] values = new int[numberOfValues];
 
             Console.Write("Enter a, b, C, A separated by space: ");
             string[] enteredValues = Console.ReadLine().Split(' ');
@@ -71,6 +71,23 @@ namespace csharp_practice
 
             // Solution 'D'
             Console.WriteLine(FindSameSumOfOddDigits(A));
+        }
+
+
+        public static int Ackermann(int n, int m)
+        {
+            if (n == 0) return m + 1;
+            else if (m == 0) return Ackermann(n - 1, 1);
+            else return Ackermann(n - 1, Ackermann(n, m - 1));
+        }
+
+        public static void Task3_5()
+        {
+            Console.Write("Enter n, m separated by space: ");
+            string[] enteredValues = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(enteredValues[0]), m = Convert.ToInt32(enteredValues[1]);
+
+            Console.WriteLine(Ackermann(n, m));
         }
     }
 }
