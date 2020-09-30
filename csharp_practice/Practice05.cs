@@ -89,5 +89,23 @@ namespace csharp_practice
 
             Console.WriteLine(Ackermann(n, m));
         }
+
+        public static void Printer(int n)
+        {
+            if (n == 0) return;
+
+            Printer(n - 1);
+
+            for (int i = n; i > 0; i--) Console.Write(i + " ");
+            Console.Write("\n");
+        }
+
+        public static void Task4_5()
+        {
+            Console.Write("Enter n: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            Printer(n);
+        }
     }
 }
