@@ -74,7 +74,7 @@ namespace csharp_practice
         }
 
 
-        public static int Ackermann(int n, int m)
+        public static long Ackermann(long n, long m)
         {
             if (n == 0) return m + 1;
             else if (m == 0) return Ackermann(n - 1, 1);
@@ -85,7 +85,10 @@ namespace csharp_practice
         {
             Console.Write("Enter n, m separated by space: ");
             string[] enteredValues = Console.ReadLine().Split(' ');
-            int n = Convert.ToInt32(enteredValues[0]), m = Convert.ToInt32(enteredValues[1]);
+            long n = Convert.ToInt64(enteredValues[0]);
+            long m = Convert.ToInt64(enteredValues[1]);
+
+            Console.WriteLine(n + " " + m);
 
             Console.WriteLine(Ackermann(n, m));
         }

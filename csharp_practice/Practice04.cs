@@ -59,11 +59,35 @@ namespace csharp_practice
         // Проверяет, является ли переданное число палиндромом
         public static bool checkPalindrom(int mul)
         {
-            string mul_str = Convert.ToString(mul);
+            // Нормальное решение
+            //    string mul_str = Convert.ToString(mul);
 
-            for(int i = 0; i < mul_str.Length / 2; i++)
-                if (mul_str[i] != mul_str[mul_str.Length - 1 - i])
-                    return false;
+            //    for(int i = 0; i < mul_str.Length / 2; i++)
+            //        if (mul_str[i] != mul_str[mul_str.Length - 1 - i])
+            //            return false;
+            //    return true;
+
+            // Не нормальное решение:
+            int counter = 0;
+            int temp_mul = mul;
+
+            while(temp_mul != 0)
+            {
+                temp_mul /= 10;
+                counter++;
+            }
+
+            int[] arr = new int[counter];
+
+            for(int i = 0; i < counter; i++)
+            {
+                arr[i] = mul % 10;
+                mul /= 10;
+            }
+
+            for (int i = 0; i < counter / 2; i++)
+                if (arr[i] != arr[arr.Length - i - 1]) return false;
+            
             return true;
         }
     }
