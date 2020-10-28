@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace csharp_practice
 {
     class MainClass
@@ -7,7 +8,7 @@ namespace csharp_practice
         public static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            foxlyume.Practice08.Task3_5();
+            foxlyume.Practice09.Task2_5();
         }
     }
 }
