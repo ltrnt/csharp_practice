@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -16,29 +17,29 @@ namespace csharp_practice
             // Переписать в новый файл все символы, за которыми в первом файле следует данная буква.
             string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
 
-            char check_symbol = Convert.ToChar(Console.Read());
+            Console.Write("Enter target symbol: ");
+            char target = Convert.ToChar(Console.ReadLine());
 
-            using (FileStream fileIn = new FileStream(path + "/file05_20_in", FileMode.Open, FileAccess.Read))
+            using(StreamReader fileIn = new StreamReader(path + "/file09_20_in.txt"))
             {
-                using (FileStream fileOut = new FileStream(path + "/file05_20_out", FileMode.OpenOrCreate, FileAccess.Write))
+                using (StreamWriter fileOut = new StreamWriter(path + "/file09_20_out.txt"))
                 {
-                    int symbol = -1;
-                    int current_symbol = -1;
-                    while ((current_symbol = fileIn.ReadByte()) != -1)
+                    string[] values = fileIn.ReadLine().Split(' ');
+                    char last = Convert.ToChar(values[0]);
+
+                    for (int i = 1; i < values.Length; i++)
                     {
-                        if (symbol < 0)
+                        if (Convert.ToChar(values[i]).Equals(target))
                         {
-                            continue;
-                        }
-                        else if ((char)current_symbol == check_symbol)
-                        {
-                            fileOut.WriteByte((byte)symbol);
+                            fileOut.Write(last);
+                            fileOut.Write(" ");
                         }
 
-                        symbol = current_symbol;
+                        last = Convert.ToChar(values[i]);
                     }
                 }
             }
+           
         }
 
     }

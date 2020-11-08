@@ -8,7 +8,8 @@ namespace csharp_practice
         public static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            foxlyume.Practice09.Task2_5();
+            
+            Practice13.Task_4();
         }
     }
 }
