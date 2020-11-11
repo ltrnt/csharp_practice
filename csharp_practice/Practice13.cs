@@ -5,6 +5,7 @@ namespace csharp_practice
 {
     public class Practice13
     {
+        // TODO Нужно протестировать.
         public static void Task_4()
         { // Задание 4
 
