@@ -21,8 +21,6 @@ namespace csharp_practice
                 return String.Format("{0} {1} {2}", x, y, z);
             }
 
-
-
             public static double Perimeter(SPoint p1, SPoint p2, SPoint p3)
             {
 
@@ -37,73 +35,72 @@ namespace csharp_practice
             }
         }
 
-        // TODO Нужно протестировать.
         public static void Task01_18()
         {
-            // Решить задачу, используя структуру SPoint для хранения координат точки:
-            // Замечание.В задачах с нечетными номерами множество точек задано на плоскости,
-            // в задачах с четными номерами множество точек задано в пространстве.
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
 
-            // Найти три различные точки из заданного множества точек, образующих треугольник наибольшего периметра.
-
-            Console.Write("Введите количество точек: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            string []line;
-
-            SPoint[] arr = new SPoint[n];
-
-            for (int i = 0; i < n; i++)
+            using (StreamReader fileIn = new StreamReader(path + "/practice14_2in.txt"))
             {
-                Console.Write("Введите координаты точки через пробел (x y z): ");
-                line = Console.ReadLine().Split(' ');
-
-                arr[i] = new SPoint(Convert.ToInt32(line[0]), Convert.ToInt32(line[1]), Convert.ToInt32(line[2]));
-            }
-
-            double max = 0;
-            double p;
-
-            int i1 = -1;
-            int i2 = -1;
-            int i3 = -1;
-
-
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
+                using (StreamWriter fileOut = new StreamWriter(path + "/practice14_2out.txt"))
                 {
-                    if (j == i) continue;
+                    int n = Convert.ToInt32(fileIn.ReadLine());
 
-                    for (int k = 0; k < n; k++)
+                    string[] line;
+
+                    SPoint[] arr = new SPoint[n];
+
+                    for (int i = 0; i < n; i++)
                     {
-                        if (k == j || k == i) continue;
+                        line = fileIn.ReadLine().Split(' ');
 
-                        p = SPoint.Perimeter(arr[i], arr[j], arr[k]);
-                        if (p > max)
+                        arr[i] = new SPoint(Convert.ToInt32(line[0]), Convert.ToInt32(line[1]), Convert.ToInt32(line[2]));
+                    }
+
+                    double max = 0;
+                    double p;
+
+                    int i1 = -1;
+                    int i2 = -1;
+                    int i3 = -1;
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        for (int j = 0; j < n; j++)
                         {
-                            max = p;
-                            i1 = i;
-                            i2 = j;
-                            i3 = k;
+                            if (j == i) continue;
+
+                            for (int k = 0; k < n; k++)
+                            {
+                                if (k == j || k == i) continue;
+
+                                p = SPoint.Perimeter(arr[i], arr[j], arr[k]);
+                                if (p > max)
+                                {
+                                    max = p;
+                                    i1 = i;
+                                    i2 = j;
+                                    i3 = k;
+                                }
+                            }
                         }
+                    }
+
+                    if (max < 0.5)
+                    {
+                        fileOut.WriteLine("Точки не найдены");
+                    }
+                    else
+                    {
+                        fileOut.WriteLine("Максимальный периметр: " + max);
+                        fileOut.WriteLine(arr[i1]);
+                        fileOut.WriteLine(arr[i2]);
+                        fileOut.WriteLine(arr[i3]);
                     }
                 }
             }
-
-            if (max < 0.5)
-            {
-                Console.WriteLine("Точки не найдены");
-            } else
-            {
-                Console.WriteLine("Максимальный периметр: " + max);
-                Console.WriteLine(arr[i1]);
-                Console.WriteLine(arr[i2]);
-                Console.WriteLine(arr[i3]);
-            }
         }
 
-
+        // NEXT
         struct BankAccount : IComparable<BankAccount>
         {
             public string name;
@@ -138,15 +135,8 @@ namespace csharp_practice
             }
         }
 
-        // TODO Нужно протестировать.
         public static void Task02_8()
         {
-            // Решить задачу, разработав собственную структуру для хранения информации
-            // На основе данных входного файла составить список вкладчиков банка, включив следующие данные:
-            // ФИО, No счета, сумма, год открытия счета.
-            // Вывести в новый файл информацию о тех вкладчиках, которые открыли вклад в текущем году, отсортировав их по сумме вклада.
-
-
             string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
 
             Console.Write("Введите год поиска: ");
@@ -155,7 +145,7 @@ namespace csharp_practice
             int n = 0;
             BankAccount[] bankAccounts;
 
-            using (StreamReader fileIn = new StreamReader(path + "/input14_08.txt"))
+            using (StreamReader fileIn = new StreamReader(path + "/practice14_in.txt"))
             {
                 n = Convert.ToInt32(fileIn.ReadLine());
                 bankAccounts = new BankAccount[n];
@@ -175,7 +165,7 @@ namespace csharp_practice
 
             Array.Sort(bankAccounts);
 
-            using (StreamWriter fileOut = new StreamWriter(path + "/output14_08.txt"))
+            using (StreamWriter fileOut = new StreamWriter(path + "/practice14_out.txt"))
             {
                 foreach (var item in bankAccounts)
                 {
