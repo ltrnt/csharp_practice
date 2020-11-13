@@ -408,3 +408,4 @@ ASALocalRun/
 csharp_practice.sln
 csharp_practice.csproj
 csharp_practice/Properties/
+.editorconfig

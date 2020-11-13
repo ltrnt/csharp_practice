@@ -29,7 +29,7 @@ namespace csharp_practice
 
             for (int i = 0; i < m; i++)
             {
-                b = (char)rand.Next(0x0430, 0x44F);
+                b = (char)rand.Next(0x0430, 0x43B);
                 s.Append(b);
             }
 
