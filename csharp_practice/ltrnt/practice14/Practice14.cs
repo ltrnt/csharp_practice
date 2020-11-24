@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace csharp_practice
+namespace csharp_practice.ltrnt.practice14
 {
     public class Practice14
     {
@@ -16,6 +16,7 @@ namespace csharp_practice
                 this.z = z;
             }
 
+            override
             public string ToString()
             {
                 return String.Format("{0} {1} {2}", x, y, z);
@@ -28,76 +29,89 @@ namespace csharp_practice
                 double b = Math.Sqrt(Math.Pow(p1.x - p3.x, 2) + Math.Pow(p1.y - p3.y, 2) + Math.Pow(p1.z - p3.z, 2));
                 double c = Math.Sqrt(Math.Pow(p2.x - p3.x, 2) + Math.Pow(p2.y - p3.y, 2) + Math.Pow(p2.z - p3.z, 2));
 
-                if (a + b <= c || a + c <= b || a + c <= b)
+                if (a + b < c && a + c < b && b + c < a)
                     return 0;
 
                 return a + b + c;
             }
         }
 
-        public static void Task01_18()
+        public static SPoint[] input1(ref int n)
         {
-            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice14";
+            SPoint[] arr;
 
             using (StreamReader fileIn = new StreamReader(path + "/practice14_2in.txt"))
             {
-                using (StreamWriter fileOut = new StreamWriter(path + "/practice14_2out.txt"))
+                
+                n = Convert.ToInt32(fileIn.ReadLine());
+
+                string[] line;
+
+                arr = new SPoint[n];
+
+                for (int i = 0; i < n; i++)
                 {
-                    int n = Convert.ToInt32(fileIn.ReadLine());
+                    line = fileIn.ReadLine().Split(' ');
 
-                    string[] line;
+                    arr[i] = new SPoint(Convert.ToInt32(line[0]), Convert.ToInt32(line[1]), Convert.ToInt32(line[2]));
+                }
+                
+            }
 
-                    SPoint[] arr = new SPoint[n];
+            return arr;
+        }
 
-                    for (int i = 0; i < n; i++)
+        public static void Task01_18()
+        {
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice14";
+
+            using (StreamWriter fileOut = new StreamWriter(path + "/practice14_2out.txt"))
+            {
+                int n = 0;
+                SPoint[] arr = input1(ref n);
+
+                double max = 0;
+                double p;
+
+                int i1 = -1;
+                int i2 = -1;
+                int i3 = -1;
+
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
                     {
-                        line = fileIn.ReadLine().Split(' ');
+                        if (j == i) continue;
 
-                        arr[i] = new SPoint(Convert.ToInt32(line[0]), Convert.ToInt32(line[1]), Convert.ToInt32(line[2]));
-                    }
-
-                    double max = 0;
-                    double p;
-
-                    int i1 = -1;
-                    int i2 = -1;
-                    int i3 = -1;
-
-                    for (int i = 0; i < n; i++)
-                    {
-                        for (int j = 0; j < n; j++)
+                        for (int k = 0; k < n; k++)
                         {
-                            if (j == i) continue;
+                            if (k == j || k == i) continue;
 
-                            for (int k = 0; k < n; k++)
+                            p = SPoint.Perimeter(arr[i], arr[j], arr[k]);
+                            if (p > max)
                             {
-                                if (k == j || k == i) continue;
-
-                                p = SPoint.Perimeter(arr[i], arr[j], arr[k]);
-                                if (p > max)
-                                {
-                                    max = p;
-                                    i1 = i;
-                                    i2 = j;
-                                    i3 = k;
-                                }
+                                max = p;
+                                i1 = i;
+                                i2 = j;
+                                i3 = k;
                             }
                         }
                     }
-
-                    if (max < 0.5)
-                    {
-                        fileOut.WriteLine("Точки не найдены");
-                    }
-                    else
-                    {
-                        fileOut.WriteLine("Максимальный периметр: " + max);
-                        fileOut.WriteLine(arr[i1]);
-                        fileOut.WriteLine(arr[i2]);
-                        fileOut.WriteLine(arr[i3]);
-                    }
                 }
-            }
+
+                if (max < 0.5)
+                {
+                    fileOut.WriteLine("Точки не найдены");
+                }
+                else
+                {
+                    fileOut.WriteLine("Максимальный периметр: " + max);
+                    fileOut.WriteLine(arr[i1]);
+                    fileOut.WriteLine(arr[i2]);
+                    fileOut.WriteLine(arr[i3]);
+                }
+             }
         }
 
         // NEXT
@@ -137,7 +151,7 @@ namespace csharp_practice
 
         public static void Task02_8()
         {
-            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice14";
 
             Console.Write("Введите год поиска: ");
             int current_year = Convert.ToInt32(Console.ReadLine());

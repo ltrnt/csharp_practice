@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace csharp_practice
 {
@@ -6,7 +7,12 @@ namespace csharp_practice
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Its work!");
+            Console.OutputEncoding = Encoding.UTF8;
+
+            //ltrnt.practice12.Practice12.Generator();
+            //ltrnt.practice12.Practice12.TimeChecker(3);
+            //ltrnt.practice12.Practice12.TimeChecker(100);
+            
         }
     }
 }

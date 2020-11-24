@@ -1,42 +1,21 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 
-namespace csharp_practice
+namespace csharp_practice.ltrnt.practice12
 {
     public class Practice12
     {
-        public static void Task_5()
-        {
-            Random rand = new Random();
+        // Задача 5
 
-            int n = 10000;
-            int m = 3;
-            char a;
-            char b;
+        // Generator() - запускать для генерации 3-х файлов(10000 символов, 100 символов, 3 символа)
+        // TimeChecker(int fileSize) - Запускать для замера скорости выполнения. В параметре передать количество символов в подстроке (3 или 100).
 
-            StringBuilder t = new StringBuilder();
-            StringBuilder s = new StringBuilder();
-            Console.Write("T = ");
-            for (int i = 0; i < n; i++)
-            {
-                a = (char)rand.Next(0x0430, 0x43B);
-                t.Append(a);
-            }
+        public static int Algorithm(string t, string s) {
+            int counter = 0;
 
-            Console.Write(t);
-            Console.WriteLine();
-            Console.Write("S = ");
-
-            for (int i = 0; i < m; i++)
-            {
-                b = (char)rand.Next(0x0430, 0x43B);
-                s.Append(b);
-            }
-
-            Console.Write(s);
-            Console.WriteLine();
             const long P = 37;
-            t.Length = t.Length;
 
             //вычисляем массив степеней P 
             long[] pwp = new long[t.Length];
@@ -72,8 +51,87 @@ namespace csharp_practice
                 //приводим хэш-значения двух подстрок к одной степени 
                 if (cur_h == h_s * pwp[i]) // если хеш-значения равны, то и подстроки равны 
                 {
-                    Console.Write("{0} ", i); // выводим позицию i, с которой начинается повторение 
+                    //Console.Write("{0} ", i); // выводим позицию i, с которой начинается повторение
+                    counter++;
                 }
+            }
+
+            return counter;
+        }
+
+        public static void Generator()
+        {
+            //random.Next(1072, 1103);
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice12";
+
+            Random random = new Random();
+
+            int low = 1072;
+            int high = 1087;
+
+
+            using (StreamWriter file10000 = new StreamWriter(path + "/10000.txt"))
+            {
+                char symbol;
+
+                for (int i = 0; i < 10000; i++)
+                {
+                    symbol = (char)random.Next(low, high);
+                    file10000.Write(symbol);
+                }
+            }
+
+            using (StreamWriter file3 = new StreamWriter(path + "/3.txt"))
+            {
+                char symbol;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    symbol = (char)random.Next(low, high);
+                    file3.Write(symbol);
+                }
+            }
+
+            using (StreamWriter file100 = new StreamWriter(path + "/100.txt"))
+            {
+                char symbol;
+
+                for (int i = 0; i < 100; i++)
+                {
+                    symbol = (char)random.Next(low, high);
+                    file100.Write(symbol);
+                }
+            }
+        }
+
+        public static void TimeChecker(int fileSize)
+        {
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice12";
+
+            string T;
+            string S;
+
+            using (StreamReader fileT = new StreamReader(path + "/10000.txt"))
+            {
+                T = fileT.ReadToEnd();
+            }
+
+            using (StreamReader fileS = new StreamReader(path + "/" + fileSize + ".txt"))
+            {
+                S = fileS.ReadToEnd();
+            }
+
+            Stopwatch timer = new Stopwatch();
+
+            timer.Start();
+            int counter = Algorithm(T, S);
+            timer.Stop();
+
+            Console.WriteLine("For {0} is {1}", fileSize, counter);
+
+            using (StreamWriter fileOut = new StreamWriter(path + "/out.txt", true))
+            {
+                fileOut.WriteLine("Для {0} символов: {1} мс, {2} тактов, найденно {3} совпадение(й)", fileSize, timer.ElapsedMilliseconds, timer.ElapsedTicks, counter);
             }
         }
     }

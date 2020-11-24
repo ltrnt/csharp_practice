@@ -15,7 +15,7 @@ namespace csharp_practice
         {
             // Дан файл, компонентами которого являются символы.
             // Переписать в новый файл все символы, за которыми в первом файле следует данная буква.
-            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice09";
 
             Console.Write("Enter target symbol: ");
             char target = Convert.ToChar(Console.ReadLine());
@@ -24,7 +24,8 @@ namespace csharp_practice
             {
                 using (StreamWriter fileOut = new StreamWriter(path + "/file09_20_out.txt"))
                 {
-                    string[] values = fileIn.ReadLine().Split(' ');
+                    char[] sep = { ' ', '\n', '\t', '\r'};
+                    string[] values = fileIn.ReadToEnd().Split(sep, StringSplitOptions.RemoveEmptyEntries);
                     char last = Convert.ToChar(values[0]);
 
                     for (int i = 1; i < values.Length; i++)

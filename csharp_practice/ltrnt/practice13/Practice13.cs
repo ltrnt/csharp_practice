@@ -9,7 +9,7 @@ namespace csharp_practice
         
         public static void Task_4()
         {
-            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice";
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice13";
 
             using (StreamReader fileIn = new StreamReader(path + "/practice13_in.txt"))
             {
