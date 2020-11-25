@@ -131,7 +131,7 @@ namespace csharp_practice.ltrnt.practice12
 
             using (StreamWriter fileOut = new StreamWriter(path + "/out.txt", true))
             {
-                fileOut.WriteLine("Для {0} символов: {1} мс, {2} тактов, найденно {3} совпадение(й)", fileSize, timer.ElapsedMilliseconds, timer.ElapsedTicks, counter);
+                fileOut.WriteLine("Для {0} символов: {1} мс, {2} такта(ов), найденно {3} совпадение(й)", fileSize, timer.ElapsedMilliseconds, timer.ElapsedTicks, counter);
             }
         }
     }
