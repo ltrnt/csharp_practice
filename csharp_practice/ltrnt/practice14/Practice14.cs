@@ -29,7 +29,7 @@ namespace csharp_practice.ltrnt.practice14
                 double b = Math.Sqrt(Math.Pow(p1.x - p3.x, 2) + Math.Pow(p1.y - p3.y, 2) + Math.Pow(p1.z - p3.z, 2));
                 double c = Math.Sqrt(Math.Pow(p2.x - p3.x, 2) + Math.Pow(p2.y - p3.y, 2) + Math.Pow(p2.z - p3.z, 2));
 
-                if (a + b < c && a + c < b && b + c < a)
+                if (a + b <= c || a + c <= b || b + c <= a)
                     return 0;
 
                 return a + b + c;

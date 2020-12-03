@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -132,6 +133,40 @@ namespace csharp_practice.ltrnt.practice12
             using (StreamWriter fileOut = new StreamWriter(path + "/out.txt", true))
             {
                 fileOut.WriteLine("Для {0} символов: {1} мс, {2} такта(ов), найденно {3} совпадение(й)", fileSize, timer.ElapsedMilliseconds, timer.ElapsedTicks, counter);
+
+                // Для получения среднего времени
+                using (StreamWriter fileMiddle = new StreamWriter(path + "/middle" + fileSize + ".txt", true))
+                {
+                    fileMiddle.Write(timer.ElapsedMilliseconds + " ");
+                }
+            }
+        }
+
+        public static void GetMiddleTime(int fileSize)
+        {
+            string path = "/Users/ltrnt/Projects/csharp_practice/csharp_practice/ltrnt/practice12";
+
+            List<int> list = new List<int>();
+
+            double middle = 0;
+
+            // Для получения среднего времени
+            using (StreamReader fileMiddle = new StreamReader(path + "/middle" + fileSize + ".txt"))
+            {
+                char[] sep = { ' ', '\n', '\t', '\r' };
+                string[] line = fileMiddle.ReadLine().Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+                for (int i = 0; i < line.Length; i++)
+                {
+                    middle += Convert.ToDouble(line[i]);
+                }
+
+                middle /= line.Length;
+            }
+
+            using (StreamWriter fileOut = new StreamWriter(path + "/out.txt", true))
+            {
+                fileOut.WriteLine("Среднее время для {0} - {1}",fileSize, middle);
             }
         }
     }
