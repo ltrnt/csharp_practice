@@ -10,7 +10,23 @@ namespace csharp_practice.ltrnt.practice17
         public static void Task8()
         {
             // Testing
-            
+
+            MyString obj1 = new MyString('r', 20);
+            MyString obj2 = new MyString();
+            MyString obj3 = "hello123 world12345";
+
+            Console.WriteLine(obj1);
+            Console.WriteLine(obj2);
+            Console.WriteLine(obj3);
+
+
+            Console.WriteLine(obj3.CountDigits());
+
+            obj3.FindLongestChars();
+
+            Console.WriteLine();
+            obj3.PrintOneChar();
+
         }
 
         public class MyString
@@ -106,7 +122,12 @@ namespace csharp_practice.ltrnt.practice17
 
             public static implicit operator string(MyString str)
             {
-                return string.Copy(str.Line);
+                if (str.Line != null)
+                {
+                    return string.Copy(str.Line);
+                }
+                else return "";
+                
             }
 
             public static implicit operator MyString(string str)

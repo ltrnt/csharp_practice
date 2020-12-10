@@ -11,18 +11,18 @@ namespace csharp_practice
         {
             Console.OutputEncoding = Encoding.UTF8;
 
+            // Практика 12
             //ltrnt.practice12.Practice12.Generator();
             //ltrnt.practice12.Practice12.TimeChecker(3); // 3 раза
             //ltrnt.practice12.Practice12.TimeChecker(100); // 3 раза
             //ltrnt.practice12.Practice12.GetMiddleTime(3);
-            ltrnt.practice12.Practice12.GetMiddleTime(100);
+            //ltrnt.practice12.Practice12.GetMiddleTime(100);
 
-            //ltrnt.practice14.Practice14.Task01_18();
-
-            //ltrnt.practice15and16.Practice15and16.Task1();
-            //ltrnt.practice15and16.Practice15and16.Task2();
-
+            // Практика 17
             //ltrnt.practice17.Practice17.Task8();
+
+            // Практика 18
+            ltrnt.practice18.Practice18.Task8();
 
         }
     }
