@@ -18,14 +18,16 @@ namespace csharp_practice
             //ltrnt.practice12.Practice12.GetMiddleTime(3);
             //ltrnt.practice12.Practice12.GetMiddleTime(100);
 
-            // Практика 13
-            ltrnt.practice13.Practice13.Task_4();
+            // Практика 13 TODO
+            // ltrnt.practice13.Practice13.Task_4();
 
             // Практика 17
             //ltrnt.practice17.Practice17.Task8();
 
             // Практика 18
             //ltrnt.practice18.Practice18.Task8();
+
+            foxlyume.practice17.Practice17.Test();
 
         }
     }
