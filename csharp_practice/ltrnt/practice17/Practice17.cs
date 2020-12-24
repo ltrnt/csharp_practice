@@ -26,6 +26,22 @@ namespace csharp_practice.ltrnt.practice17
 
             Console.WriteLine();
             obj3.PrintOneChar();
+            Console.WriteLine();
+
+            Console.WriteLine(obj3[3]);
+
+            Console.WriteLine(!obj3);
+            Console.WriteLine();
+
+            if (obj3) Console.WriteLine("1 done");
+
+            if (obj3 & obj1) Console.WriteLine("& true");
+            else Console.WriteLine("& false");
+
+
+            string line = obj1;
+
+            Console.WriteLine(line);
 
         }
 

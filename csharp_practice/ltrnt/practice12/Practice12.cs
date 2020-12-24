@@ -13,6 +13,14 @@ namespace csharp_practice.ltrnt.practice12
         // Generator() - запускать для генерации 3-х файлов(10000 символов, 100 символов, 3 символа)
         // TimeChecker(int fileSize) - Запускать для замера скорости выполнения. В параметре передать количество символов в подстроке (3 или 100).
 
+        // Практика 12
+        //ltrnt.practice12.Practice12.Generator();
+        //ltrnt.practice12.Practice12.TimeChecker(3); // 3 раза
+        //ltrnt.practice12.Practice12.TimeChecker(100); // 3 раза
+        //ltrnt.practice12.Practice12.GetMiddleTime(3);
+        //ltrnt.practice12.Practice12.GetMiddleTime(100);
+
+
         public static int Algorithm(string t, string s) {
             int counter = 0;
 

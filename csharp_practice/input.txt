@@ -1,0 +1,3 @@
+﻿Truck Tesla 12345 120 100 True
+Motorcycle Honda 54321 160 0 False
+Passenger_Car BMW 12543 70 20

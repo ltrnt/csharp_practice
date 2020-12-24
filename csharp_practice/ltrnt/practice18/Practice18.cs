@@ -114,7 +114,7 @@ namespace csharp_practice.ltrnt.practice18
 
             foreach (var item in list)
             {
-                //if(item.IsSearchBySurname("Иванов"))
+                //if(item.IsSearchBySurname("Сидоров"))
                     item.Show();
             }
         }
