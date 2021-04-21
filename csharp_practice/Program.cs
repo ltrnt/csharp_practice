@@ -9,7 +9,8 @@ namespace csharp_practice
     {
         public static void Main(string[] args)
         {
-            ltrnt.practice24.shkabura.Practice.test();
+            //ltrnt.practice24.shkabura.Practice.test();
+            ltrnt.practice24.filippov.view.Program.DoSomething();
         }
     }
 }
